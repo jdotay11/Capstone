@@ -1,0 +1,17 @@
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\bin\Debug\net6.0-windows\VCloset.exe
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\bin\Debug\net6.0-windows\VCloset.deps.json
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\bin\Debug\net6.0-windows\VCloset.runtimeconfig.json
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\bin\Debug\net6.0-windows\VCloset.dll
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\bin\Debug\net6.0-windows\VCloset.pdb
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.csproj.AssemblyReference.cache
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.Form1.resources
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.csproj.GenerateResource.cache
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.AssemblyInfoInputs.cache
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.AssemblyInfo.cs
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.csproj.CoreCompileInputs.cache
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.dll
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\refint\VCloset.dll
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.pdb
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.genruntimeconfig.cache
+C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\ref\VCloset.dll
