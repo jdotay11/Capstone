@@ -73,6 +73,7 @@
             this.topNextBtn.TabIndex = 2;
             this.topNextBtn.Text = "next";
             this.topNextBtn.UseVisualStyleBackColor = true;
+            this.topNextBtn.Click += new System.EventHandler(this.topNextBtn_Click);
             // 
             // topBackBtn
             // 
@@ -82,6 +83,7 @@
             this.topBackBtn.TabIndex = 3;
             this.topBackBtn.Text = "back";
             this.topBackBtn.UseVisualStyleBackColor = true;
+            this.topBackBtn.Click += new System.EventHandler(this.topBackBtn_Click);
             // 
             // bottomBackBtn
             // 
@@ -101,6 +103,7 @@
             this.bottomNextBtn.TabIndex = 5;
             this.bottomNextBtn.Text = "next";
             this.bottomNextBtn.UseVisualStyleBackColor = true;
+            this.bottomNextBtn.Click += new System.EventHandler(this.bottomNextBtn_Click);
             // 
             // bottomUploadBtn
             // 

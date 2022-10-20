@@ -2,11 +2,14 @@ namespace VCloset
 {
     public partial class Form1 : Form
     {
-        List<Image> topImgs = new List<Image>();
-        List<Image> bottomImgs = new List<Image>();
+        int topsIndex = 0;
+        string[] topsPath = new string[];
         public Form1()
         {
             InitializeComponent();
+            string topsFolder = "C:\\Users\\jaybr\\source\\repos\\Capstone\\VCloset\\Tops\\";
+            topsPaths = Directory.GetFiles(topsFolder);
+            int maxTops = topsPaths.Length;
         }
 
         private void topUploadBtn_Click(object sender, EventArgs e)
@@ -54,6 +57,26 @@ namespace VCloset
         }
 
 
+        private void topNextBtn_Click(object sender, EventArgs e)
+        {
+            // get next file
+            // draw the file as bitmap
+            topsIndex++;
+            System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(topsPath[topsIndex]);
+        }
+
+        private void topBackBtn_Click(object sender, EventArgs e)
+        {
+            // get last file
+            // draw the file as bitmap
+            topsIndex--;
+            System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(topsPath[topsIndex]);
+        }
+
+        private void bottomNextBtn_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void bottomBackBtn_Click(object sender, EventArgs e)
         {
