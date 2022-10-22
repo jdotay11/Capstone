@@ -1,15 +1,40 @@
+using Microsoft.VisualBasic.ApplicationServices;
+using System.Drawing.Imaging;
+
 namespace VCloset
 {
     public partial class Form1 : Form
     {
-        int topsIndex = 0;
-        string[] topsPath = new string[];
+        string topFolder;
+        string bottomFolder;
+        int topIndex = 0;
+        int maxTop;
+        int bottomIndex = 0;
+        int maxBottom;
+        string[] topPath;
+        string[] bottomPath;
+
         public Form1()
         {
             InitializeComponent();
-            string topsFolder = "C:\\Users\\jaybr\\source\\repos\\Capstone\\VCloset\\Tops\\";
-            topsPaths = Directory.GetFiles(topsFolder);
-            int maxTops = topsPaths.Length;
+            topFolder = "..\\..\\..\\Tops\\";
+            bottomFolder = "..\\..\\..\\Bottoms\\";
+            topPath = Directory.GetFiles(topFolder);
+            bottomPath = Directory.GetFiles(bottomFolder);
+            maxTop = topPath.Length;
+            maxBottom = bottomPath.Length;
+
+            if(topPath != null)
+            {
+                System.Drawing.Bitmap topBmp = new System.Drawing.Bitmap(topPath[0]);
+                topPicture.Image = topBmp;
+            }
+            
+            if(bottomPath != null)
+            {
+                System.Drawing.Bitmap botBmp = new System.Drawing.Bitmap(bottomPath[0]);
+                bottomPicture.Image = botBmp;
+            }
         }
 
         private void topUploadBtn_Click(object sender, EventArgs e)
@@ -26,7 +51,8 @@ namespace VCloset
                 }
 
                 img = Image.FromFile(imageLocation);
-                topPicture.ImageLocation = imageLocation;
+                img.Save("C:\\Users\\jaybr\\source\\repos\\Capstone\\VCloset\\Tops\\");
+                //topPicture.ImageLocation = imageLocation;
             }
             catch (Exception)
             {
@@ -61,26 +87,60 @@ namespace VCloset
         {
             // get next file
             // draw the file as bitmap
-            topsIndex++;
-            System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(topsPath[topsIndex]);
+            if(topIndex + 1 == maxTop)
+            {
+                topIndex = 0;
+            }
+            else
+            {
+                topIndex++;
+            }
+            System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(topPath[topIndex]);
+            topPicture.Image = newBmp;
         }
 
         private void topBackBtn_Click(object sender, EventArgs e)
         {
             // get last file
             // draw the file as bitmap
-            topsIndex--;
-            System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(topsPath[topsIndex]);
+            if(topIndex - 1 < 0)
+            {
+                topIndex = maxTop - 1;
+            }
+            else
+            {
+                topIndex--;
+            }
+            System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(topPath[topIndex]);
+            topPicture.Image = newBmp;
         }
 
         private void bottomNextBtn_Click(object sender, EventArgs e)
         {
-
+            if (bottomIndex + 1 == maxBottom)
+            {
+                bottomIndex = 0;
+            }
+            else
+            {
+                bottomIndex++;
+            }
+            System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(bottomPath[bottomIndex]);
+            bottomPicture.Image = newBmp;
         }
 
         private void bottomBackBtn_Click(object sender, EventArgs e)
         {
-
+            if (bottomIndex - 1 < 0)
+            {
+                bottomIndex = maxBottom - 1;
+            }
+            else
+            {
+                bottomIndex--;
+            }
+            System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(bottomPath[bottomIndex]);
+            bottomPicture.Image = newBmp;
         }
     }
 }
