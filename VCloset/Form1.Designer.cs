@@ -133,6 +133,7 @@
             this.shuffleBtn.TabIndex = 8;
             this.shuffleBtn.Text = "shuffle";
             this.shuffleBtn.UseVisualStyleBackColor = true;
+            this.shuffleBtn.Click += new System.EventHandler(this.shuffleBtn_Click);
             // 
             // Form1
             // 

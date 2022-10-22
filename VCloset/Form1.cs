@@ -142,5 +142,19 @@ namespace VCloset
             System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(bottomPath[bottomIndex]);
             bottomPicture.Image = newBmp;
         }
+
+        private void shuffleBtn_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            if(topPath != null && bottomPath != null)
+            {
+                int topRnd = rnd.Next(0, maxTop);
+                int botRnd = rnd.Next(0, maxBottom);
+                System.Drawing.Bitmap topBmp = new System.Drawing.Bitmap(topPath[topRnd]);
+                System.Drawing.Bitmap botBmp = new System.Drawing.Bitmap(bottomPath[botRnd]);
+                topPicture.Image = topBmp;
+                bottomPicture.Image = botBmp;
+            }
+        }
     }
 }
