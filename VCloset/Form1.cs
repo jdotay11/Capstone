@@ -1,160 +1,90 @@
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Drawing.Imaging;
+using System.Windows.Forms.VisualStyles;
 
 namespace VCloset
 {
     public partial class Form1 : Form
     {
-        string topFolder;
-        string bottomFolder;
-        int topIndex = 0;
-        int maxTop;
-        int bottomIndex = 0;
-        int maxBottom;
-        string[] topPath;
-        string[] bottomPath;
+        Wardrobe wardrobe;
 
         public Form1()
         {
             InitializeComponent();
-            topFolder = "..\\..\\..\\Tops\\";
-            bottomFolder = "..\\..\\..\\Bottoms\\";
-            topPath = Directory.GetFiles(topFolder);
-            bottomPath = Directory.GetFiles(bottomFolder);
-            maxTop = topPath.Length;
-            maxBottom = bottomPath.Length;
-
-            if(topPath != null)
+            wardrobe = new Wardrobe();
+            List<Bitmap> bmps = wardrobe.Populate();
+            if(bmps.Count > 0)
             {
-                System.Drawing.Bitmap topBmp = new System.Drawing.Bitmap(topPath[0]);
-                topPicture.Image = topBmp;
+                topPicture.Image = bmps[0];
+                bottomPicture.Image = bmps[1];
             }
-            
-            if(bottomPath != null)
+            else
             {
-                System.Drawing.Bitmap botBmp = new System.Drawing.Bitmap(bottomPath[0]);
-                bottomPicture.Image = botBmp;
+                MessageBox.Show("No Top(s) and Bottom(s) to Display");
             }
         }
 
         private void topUploadBtn_Click(object sender, EventArgs e)
         {
-            Image img;
-            string imageLocation = "";
-            try
-            {
-                OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "png files(*.png)|*.png| all files(*.*)|*.*";
-                if(ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    imageLocation = ofd.FileName;
-                }
-
-                img = Image.FromFile(imageLocation);
-                img.Save("C:\\Users\\jaybr\\source\\repos\\Capstone\\VCloset\\Tops\\");
-                //topPicture.ImageLocation = imageLocation;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error Reading in Photo");
-            }
+            string img = wardrobe.AddTop();
+            topPicture.ImageLocation = img;
         }
 
         private void bottomUploadBtn_Click(object sender, EventArgs e)
         {
-            Image img;
-            string imageLocation = "";
-            try
-            {
-                OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "png files(*.png)|*.png| all files(*.*)|*.*";
-                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    imageLocation = ofd.FileName;
-                }
-
-                img = Image.FromFile(imageLocation);
-                bottomPicture.ImageLocation = imageLocation;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error Reading in Photo");
-            }
+            string img = wardrobe.AddBottom();
+            bottomPicture.ImageLocation = img;
         }
 
 
         private void topNextBtn_Click(object sender, EventArgs e)
         {
-            // get next file
-            // draw the file as bitmap
-            if(topIndex + 1 == maxTop)
-            {
-                topIndex = 0;
-            }
-            else
-            {
-                topIndex++;
-            }
-            System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(topPath[topIndex]);
-            topPicture.Image = newBmp;
+            Bitmap bmp = wardrobe.NextTop();
+            topPicture.Image = bmp;
         }
 
         private void topBackBtn_Click(object sender, EventArgs e)
         {
-            // get last file
-            // draw the file as bitmap
-            if(topIndex - 1 < 0)
-            {
-                topIndex = maxTop - 1;
-            }
-            else
-            {
-                topIndex--;
-            }
-            System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(topPath[topIndex]);
-            topPicture.Image = newBmp;
+            Bitmap bmp = wardrobe.PrevTop();
+            topPicture.Image = bmp;
         }
 
         private void bottomNextBtn_Click(object sender, EventArgs e)
         {
-            if (bottomIndex + 1 == maxBottom)
-            {
-                bottomIndex = 0;
-            }
-            else
-            {
-                bottomIndex++;
-            }
-            System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(bottomPath[bottomIndex]);
-            bottomPicture.Image = newBmp;
+            Bitmap bmp = wardrobe.NextBottom();
+            bottomPicture.Image = bmp;
         }
 
         private void bottomBackBtn_Click(object sender, EventArgs e)
         {
-            if (bottomIndex - 1 < 0)
-            {
-                bottomIndex = maxBottom - 1;
-            }
-            else
-            {
-                bottomIndex--;
-            }
-            System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(bottomPath[bottomIndex]);
-            bottomPicture.Image = newBmp;
+            Bitmap bmp = wardrobe.PrevBottom();
+            bottomPicture.Image = bmp;
         }
 
         private void shuffleBtn_Click(object sender, EventArgs e)
         {
-            Random rnd = new Random();
-            if(topPath != null && bottomPath != null)
+            List<Bitmap> bmps = wardrobe.Shuffle();
+            if (bmps.Count > 0)
             {
-                int topRnd = rnd.Next(0, maxTop);
-                int botRnd = rnd.Next(0, maxBottom);
-                System.Drawing.Bitmap topBmp = new System.Drawing.Bitmap(topPath[topRnd]);
-                System.Drawing.Bitmap botBmp = new System.Drawing.Bitmap(bottomPath[botRnd]);
-                topPicture.Image = topBmp;
-                bottomPicture.Image = botBmp;
+                topPicture.Image = bmps[0];
+                bottomPicture.Image = bmps[1];
             }
+            else
+            {
+                MessageBox.Show("No Top(s) and Bottom(s) to Shuffle");
+            }
+        }
+
+        private void homeMenu_Click(object sender, EventArgs e)
+        {
+            this.Show();
+        }
+
+        private void settingsMenu_Click(object sender, EventArgs e)
+        {
+            var form = new ItemSelect();
+            form.Show();
+            //this.Hide();
         }
     }
 }

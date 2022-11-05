@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace VCloset
 {
-    public class Model
+    public class Top: ClothingItem
     {
-        int currentTopIndex = 0;
-        int currentBottomIndex = 0;
-        int maxTops;
-        int maxBottoms;
+        
     }
 }
