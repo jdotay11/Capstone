@@ -40,6 +40,7 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.homeMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.uploadBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.topPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bottomPicture)).BeginInit();
             this.menuStrip.SuspendLayout();
@@ -165,11 +166,22 @@
             this.settingsMenu.Text = "Settings";
             this.settingsMenu.Click += new System.EventHandler(this.settingsMenu_Click);
             // 
+            // uploadBtn
+            // 
+            this.uploadBtn.Location = new System.Drawing.Point(406, 94);
+            this.uploadBtn.Name = "uploadBtn";
+            this.uploadBtn.Size = new System.Drawing.Size(150, 46);
+            this.uploadBtn.TabIndex = 10;
+            this.uploadBtn.Text = "upload";
+            this.uploadBtn.UseVisualStyleBackColor = true;
+            this.uploadBtn.Click += new System.EventHandler(this.uploadBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 1129);
+            this.Controls.Add(this.uploadBtn);
             this.Controls.Add(this.shuffleBtn);
             this.Controls.Add(this.topUploadBtn);
             this.Controls.Add(this.bottomUploadBtn);
@@ -206,5 +218,6 @@
         private MenuStrip menuStrip;
         private ToolStripMenuItem homeMenu;
         private ToolStripMenuItem settingsMenu;
+        private Button uploadBtn;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VCloset
 {
-    public class Top: ClothingItem
+    public class Top
     {
         
     }

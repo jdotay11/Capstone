@@ -7,7 +7,6 @@ namespace VCloset
     public partial class Form1 : Form
     {
         Wardrobe wardrobe;
-
         public Form1()
         {
             InitializeComponent();
@@ -82,9 +81,28 @@ namespace VCloset
 
         private void settingsMenu_Click(object sender, EventArgs e)
         {
-            var form = new ItemSelect();
-            form.Show();
-            //this.Hide();
+            
+        }
+
+        private void uploadBtn_Click(object sender, EventArgs e)
+        {
+            UploadView uv = new UploadView(this, wardrobe);
+            uv.Show();
+            // need to wait for form to close then run if else
+            if(uv.ReturnValueIndex == 1)
+            {
+                topPicture.ImageLocation = uv.ReturnValuePic;
+            }
+            else if(uv.ReturnValueIndex == 2)
+            {
+                bottomPicture.ImageLocation = uv.ReturnValuePic;
+            }
+            else
+            {
+                MessageBox.Show("Didn't Get an Image to Upload");
+            }
+            // check if uv has been closed ?
+            // display returned string to corresponding picture box
         }
     }
 }

@@ -34,6 +34,8 @@ namespace VCloset
         public int bottomIndex { get; private set; }
         public int maxTop { get; private set; }
         public int maxBottom { get; private set; }
+        public string currentTopPic { get; set; }
+        public string currentBottomPic { get; set; }
 
         # region inc methods
         // incrementation methods
