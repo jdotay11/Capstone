@@ -10,15 +10,15 @@ using System.Windows.Forms;
 
 namespace VCloset
 {
-    public partial class Settings : Form
+    public partial class FAQ : Form
     {
         Form1 homeView;
-        FAQ faqView;
-        public Settings(Form1 home, FAQ faq)
+        Settings settingsView;
+        public FAQ(Form1 home, Settings settings)
         {
             InitializeComponent();
             homeView = home;
-            faqView = faq;
+            settingsView = settings;
         }
 
         private void homeBtn_Click(object sender, EventArgs e)
@@ -29,24 +29,18 @@ namespace VCloset
 
         private void faqBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            faqView.Show();
+            this.Show();
         }
 
         private void settingsBtn_Click(object sender, EventArgs e)
         {
-            this.Show();
+            this.Hide();
+            settingsView.Show();
         }
 
-        private void colorSelect_Click(object sender, EventArgs e)
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ColorDialog colorDialog = new ColorDialog();
-            if (colorDialog.ShowDialog() == DialogResult.OK)
-            {
-                this.BackColor = colorDialog.Color;
-                homeView.BackColor = colorDialog.Color;
-                //faqView.BackColor = colorDialog.Color;
-            }
+            System.Diagnostics.Process.Start("www.microsoft.com");
         }
     }
 }

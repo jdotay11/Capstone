@@ -12,16 +12,20 @@ namespace VCloset
 {
     public partial class UploadView : Form
     {
-        Form1 origView;
+        Form1 homeView;
+        Settings settingsView;
+        FAQ faqView;
         Wardrobe origWardrobe;
         public int ReturnValueIndex { get; set; }
         public string ReturnValuePic { get; set; }
-        public UploadView(Form1 view, Wardrobe w)
+        public UploadView(Form1 home, Wardrobe w, Settings settings, FAQ faq)
         {
             InitializeComponent();
-            origView = view;
+            homeView = home;
+            faqView = faq;
+            settingsView = settings;
             origWardrobe = w;
-            view.Hide();
+            homeView.Hide();
         }
 
         private void uploadBtn_Click(object sender, EventArgs e)
@@ -41,27 +45,51 @@ namespace VCloset
                     ReturnValueIndex = 1;
                     ReturnValuePic = origWardrobe.AddTop();
                     this.Close();
-                    origView.Show();
+                    homeView.Show();
                 }
                 else if (itemSelect.CheckedItems[0].ToString().Equals("Bottom"))
                 {
                     ReturnValueIndex = 2;
                     ReturnValuePic = origWardrobe.AddBottom();
                     this.Close();
-                    origView.Show();
+                    homeView.Show();
                 }
                 else if (itemSelect.CheckedItems[0].ToString().Equals("Shoes"))
                 {
                     ReturnValueIndex = 3;
                     // origWardrobe.AddShoes();
                     this.Close();
-                    origView.Show();
+                    homeView.Show();
                 }
                 else
                 {
                     MessageBox.Show("No Item Selected");
                 }
             }
+        }
+
+        private void UploadView_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            homeView.Show();
+            this.Hide();
+        }
+
+        private void homeBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            homeView.Show();
+        }
+
+        private void faqBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            faqView.Show();
+        }
+
+        private void settingsBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            settingsView.Show();
         }
     }
 }
