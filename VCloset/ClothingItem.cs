@@ -6,20 +6,16 @@ using System.Threading.Tasks;
 
 namespace VCloset
 {
-    public class ClothingItem
+    public abstract class ClothingItem
     {
-        Bitmap image { get; set; }
-        String fileName { get; set; }
+        public abstract Bitmap image { get; set; }
+        public abstract String fileName { get; set; }
 
-        public ClothingItem(String file)
-        {
-            fileName = file;
-            image = new System.Drawing.Bitmap(file);
-        }
 
+        public abstract Bitmap GetImage();
         public void saveImage()
         {
-            
+
         }
     }
 }

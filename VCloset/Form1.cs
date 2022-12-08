@@ -15,7 +15,7 @@ namespace VCloset
             InitializeComponent();
             wardrobe = new Wardrobe();
             settingsView = new Settings(this, faqView);
-            faqView = new FAQ(this, settingsView);
+            faqView = new FAQ(this, settingsView);  
             uploadView = new UploadView(this, wardrobe, settingsView, faqView);
             faqView = new FAQ(this, settingsView);
 
@@ -24,10 +24,11 @@ namespace VCloset
             {
                 topPicture.Image = bmps[0];
                 bottomPicture.Image = bmps[1];
+                shoesPicture.Image = bmps[2];
             }
             else
             {
-                MessageBox.Show("No Top(s) and Bottom(s) to Display");
+                MessageBox.Show("No Top(s) and/or Bottom(s) to Display");
             }
         }
 
@@ -51,20 +52,6 @@ namespace VCloset
             // check if uv has been closed ?
             // display returned string to corresponding picture box
         }
-
-        // old uploads
-        /*
-        private void topUploadBtn_Click(object sender, EventArgs e)
-        {
-            string img = wardrobe.AddTop();
-            topPicture.ImageLocation = img;
-        }
-
-        private void bottomUploadBtn_Click(object sender, EventArgs e)
-        {
-            string img = wardrobe.AddBottom();
-            bottomPicture.ImageLocation = img;
-        }*/
         
 
         private void topNextBtn_Click(object sender, EventArgs e)
@@ -85,6 +72,18 @@ namespace VCloset
             bottomPicture.Image = bmp;
         }
 
+        private void shoesNextBtn_Click(object sender, EventArgs e)
+        {
+            Bitmap bmp = wardrobe.NextShoe();
+            shoesPicture.Image = bmp;
+        }
+
+        private void shoesBackBtn_Click(object sender, EventArgs e)
+        {
+            Bitmap bmp = wardrobe.PrevShoe();
+            shoesPicture.Image = bmp;
+        }
+
         private void bottomBackBtn_Click(object sender, EventArgs e)
         {
             Bitmap bmp = wardrobe.PrevBottom();
@@ -98,6 +97,7 @@ namespace VCloset
             {
                 topPicture.Image = bmps[0];
                 bottomPicture.Image = bmps[1];
+                shoesPicture.Image = bmps[2];
             }
             else
             {
@@ -117,6 +117,7 @@ namespace VCloset
 
         private void faqBtn_Click(object sender, EventArgs e)
         {
+            settingsView = new Settings(this, faqView);
             this.Hide();
             faqView.Show();
         }

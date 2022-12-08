@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace VCloset
 {
-    // whenever inheriting from ClothingItem, gives error (: ClothingItem)
-    public class Top: ClothingItem
+    public class Bottom: ClothingItem
     {
         public override Bitmap image { get; set; }
         public override String fileName { get; set; }
 
-        public Top(String file)
+        public Bottom(String file)
         {
             fileName = file;
             image = new System.Drawing.Bitmap(file);
@@ -22,6 +21,5 @@ namespace VCloset
         {
             return image;
         }
-
     }
 }

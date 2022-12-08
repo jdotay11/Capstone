@@ -142,6 +142,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkedListBox1);
             this.Name = "Settings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
             this.uploadPanel.ResumeLayout(false);
             this.ResumeLayout(false);

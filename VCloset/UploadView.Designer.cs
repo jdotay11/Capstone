@@ -49,11 +49,13 @@
             // 
             // uploadBtn
             // 
-            this.uploadBtn.Location = new System.Drawing.Point(388, 490);
+            this.uploadBtn.FlatAppearance.BorderSize = 0;
+            this.uploadBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.uploadBtn.Image = global::VCloset.Properties.Resources.upload;
+            this.uploadBtn.Location = new System.Drawing.Point(407, 492);
             this.uploadBtn.Name = "uploadBtn";
-            this.uploadBtn.Size = new System.Drawing.Size(150, 46);
+            this.uploadBtn.Size = new System.Drawing.Size(105, 74);
             this.uploadBtn.TabIndex = 1;
-            this.uploadBtn.Text = "upload";
             this.uploadBtn.UseVisualStyleBackColor = true;
             this.uploadBtn.Click += new System.EventHandler(this.uploadBtn_Click);
             // 
@@ -64,7 +66,7 @@
             "Top",
             "Bottom",
             "Shoes"});
-            this.itemSelect.Location = new System.Drawing.Point(346, 259);
+            this.itemSelect.Location = new System.Drawing.Point(349, 259);
             this.itemSelect.Name = "itemSelect";
             this.itemSelect.Size = new System.Drawing.Size(240, 184);
             this.itemSelect.TabIndex = 2;
@@ -123,12 +125,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(974, 1129);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(974, 729);
             this.Controls.Add(this.uploadPanel);
             this.Controls.Add(this.itemSelect);
             this.Controls.Add(this.uploadBtn);
             this.Controls.Add(this.fileText);
             this.Name = "UploadView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UploadView";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UploadView_FormClosed);
             this.uploadPanel.ResumeLayout(false);

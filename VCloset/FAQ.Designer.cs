@@ -155,6 +155,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.uploadPanel);
             this.Name = "FAQ";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FAQ";
             this.uploadPanel.ResumeLayout(false);
             this.ResumeLayout(false);

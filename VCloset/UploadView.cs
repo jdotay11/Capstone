@@ -44,21 +44,23 @@ namespace VCloset
                 {
                     ReturnValueIndex = 1;
                     ReturnValuePic = origWardrobe.AddTop();
-                    this.Close();
+                    this.Hide();
                     homeView.Show();
+                    // display correct top
                 }
                 else if (itemSelect.CheckedItems[0].ToString().Equals("Bottom"))
                 {
                     ReturnValueIndex = 2;
                     ReturnValuePic = origWardrobe.AddBottom();
-                    this.Close();
+                    this.Hide();
                     homeView.Show();
+                    //display correct bottom
                 }
                 else if (itemSelect.CheckedItems[0].ToString().Equals("Shoes"))
                 {
                     ReturnValueIndex = 3;
-                    // origWardrobe.AddShoes();
-                    this.Close();
+                    origWardrobe.AddShoes();
+                    this.Hide();
                     homeView.Show();
                 }
                 else
@@ -70,8 +72,8 @@ namespace VCloset
 
         private void UploadView_FormClosed(object sender, FormClosedEventArgs e)
         {
-            homeView.Show();
             this.Hide();
+            homeView.Show();
         }
 
         private void homeBtn_Click(object sender, EventArgs e)
