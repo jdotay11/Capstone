@@ -48,5 +48,30 @@ namespace VCloset
                 //faqView.BackColor = colorDialog.Color;
             }
         }
+
+        private void resetBtn_Click(object sender, EventArgs e)
+        {
+            homeView.ClearPictureBoxs();
+
+            System.IO.DirectoryInfo tops = new DirectoryInfo("..\\..\\..\\Tops\\");
+            System.IO.DirectoryInfo bottoms = new DirectoryInfo("..\\..\\..\\Bottoms\\");
+            System.IO.DirectoryInfo shoes = new DirectoryInfo("..\\..\\..\\Shoes\\");
+            
+
+            foreach (FileInfo file in tops.GetFiles())
+            {
+                file.Delete();
+            }
+
+            foreach (FileInfo file in bottoms.GetFiles())
+            {
+                file.Delete();
+            }
+
+            foreach (FileInfo file in shoes.GetFiles())
+            {
+                file.Delete();
+            }
+        }
     }
 }

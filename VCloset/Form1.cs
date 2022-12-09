@@ -10,6 +10,10 @@ namespace VCloset
         UploadView uploadView;
         Settings settingsView;
         FAQ faqView;
+
+        public Bitmap tempTop;
+        public Bitmap tempBottom;
+        public Bitmap tempShoe;
         public Form1()
         {
             InitializeComponent();
@@ -126,6 +130,33 @@ namespace VCloset
         {
             this.Hide();
             settingsView.Show();
+        }
+
+        public void ClearPictureBoxs()
+        {
+            //tempTop = (Bitmap)topPicture.Image.Clone();
+            //tempBottom = (Bitmap)bottomPicture.Image.Clone();
+            //tempShoe = (Bitmap)shoesPicture.Image.Clone();
+
+            topPicture.Image.Dispose();
+            bottomPicture.Image.Dispose();
+            shoesPicture.Image.Dispose();
+        }
+
+        public void SetPictureBox(int box)
+        {
+            if(box == 1)
+            {
+                topPicture.Image = wardrobe.GetNewestTop();
+            }
+            else if(box == 2)
+            {
+                bottomPicture.Image = wardrobe.GetNewestBottom();
+            }
+            else if(box == 3)
+            {
+                shoesPicture.Image = wardrobe.GetNewestShoe();
+            }
         }
     }
 }

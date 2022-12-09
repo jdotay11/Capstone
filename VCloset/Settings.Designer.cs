@@ -37,6 +37,8 @@
             this.faqBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.colorSelect = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.resetBtn = new System.Windows.Forms.Button();
             this.uploadPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,11 +117,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(277, 142);
+            this.label2.Location = new System.Drawing.Point(284, 142);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(212, 32);
+            this.label2.Size = new System.Drawing.Size(205, 32);
             this.label2.TabIndex = 15;
-            this.label2.Text = "Background Select";
+            this.label2.Text = "Background Color";
             // 
             // colorSelect
             // 
@@ -131,11 +133,32 @@
             this.colorSelect.UseVisualStyleBackColor = true;
             this.colorSelect.Click += new System.EventHandler(this.colorSelect_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(552, 142);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(158, 32);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Reset Clothes";
+            // 
+            // resetBtn
+            // 
+            this.resetBtn.Location = new System.Drawing.Point(521, 186);
+            this.resetBtn.Name = "resetBtn";
+            this.resetBtn.Size = new System.Drawing.Size(212, 60);
+            this.resetBtn.TabIndex = 18;
+            this.resetBtn.Text = "Reset";
+            this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 1129);
+            this.Controls.Add(this.resetBtn);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.colorSelect);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.uploadPanel);
@@ -160,5 +183,7 @@
         private Button faqBtn;
         private Label label2;
         private Button colorSelect;
+        private Label label3;
+        private Button resetBtn;
     }
 }

@@ -300,6 +300,24 @@ namespace VCloset
             return shoes[shoeIndex].GetImage();
         }
 
+        public Bitmap GetNewestTop()
+        {
+            topIndex = maxTop - 1;
+            return tops[maxTop - 1].GetImage();
+        }
+
+        public Bitmap GetNewestBottom()
+        {
+            bottomIndex = maxBottom - 1;
+            return bottoms[maxBottom - 1].GetImage();
+        }
+
+        public Bitmap GetNewestShoe()
+        {
+            shoeIndex = maxShoe - 1;
+            return shoes[maxShoe - 1].GetImage();
+        }
+
         public List<Bitmap> Shuffle()
         {
             List<Bitmap> bmps = new List<Bitmap>();

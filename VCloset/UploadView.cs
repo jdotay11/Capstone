@@ -44,22 +44,27 @@ namespace VCloset
                 {
                     ReturnValueIndex = 1;
                     ReturnValuePic = origWardrobe.AddTop();
+
+
+                    homeView.SetPictureBox(ReturnValueIndex);
                     this.Hide();
                     homeView.Show();
-                    // display correct top
                 }
                 else if (itemSelect.CheckedItems[0].ToString().Equals("Bottom"))
                 {
                     ReturnValueIndex = 2;
                     ReturnValuePic = origWardrobe.AddBottom();
+
+                    homeView.SetPictureBox(ReturnValueIndex);
                     this.Hide();
                     homeView.Show();
-                    //display correct bottom
                 }
                 else if (itemSelect.CheckedItems[0].ToString().Equals("Shoes"))
                 {
                     ReturnValueIndex = 3;
                     origWardrobe.AddShoes();
+
+                    homeView.SetPictureBox(ReturnValueIndex);
                     this.Hide();
                     homeView.Show();
                 }
