@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.uploadPanel = new System.Windows.Forms.Panel();
             this.homeBtn = new System.Windows.Forms.Button();
@@ -39,21 +38,16 @@
             this.colorSelect = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.resetBtn = new System.Windows.Forms.Button();
+            this.toggleHeadwear = new System.Windows.Forms.RadioButton();
+            this.toggleTop = new System.Windows.Forms.RadioButton();
+            this.toggleBottom = new System.Windows.Forms.RadioButton();
+            this.toggleShoe = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.toggleBtn = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.darkModeSelect = new System.Windows.Forms.Button();
             this.uploadPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "Headwear",
-            "Tops",
-            "Bottoms",
-            "Shoes"});
-            this.checkedListBox1.Location = new System.Drawing.Point(12, 186);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(240, 184);
-            this.checkedListBox1.TabIndex = 0;
             // 
             // label1
             // 
@@ -152,21 +146,112 @@
             this.resetBtn.UseVisualStyleBackColor = true;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
+            // toggleHeadwear
+            // 
+            this.toggleHeadwear.AutoSize = true;
+            this.toggleHeadwear.Location = new System.Drawing.Point(41, 186);
+            this.toggleHeadwear.Name = "toggleHeadwear";
+            this.toggleHeadwear.Size = new System.Drawing.Size(151, 36);
+            this.toggleHeadwear.TabIndex = 19;
+            this.toggleHeadwear.TabStop = true;
+            this.toggleHeadwear.Text = "Headwear";
+            this.toggleHeadwear.UseVisualStyleBackColor = true;
+            // 
+            // toggleTop
+            // 
+            this.toggleTop.AutoSize = true;
+            this.toggleTop.Location = new System.Drawing.Point(41, 228);
+            this.toggleTop.Name = "toggleTop";
+            this.toggleTop.Size = new System.Drawing.Size(84, 36);
+            this.toggleTop.TabIndex = 20;
+            this.toggleTop.TabStop = true;
+            this.toggleTop.Text = "Top";
+            this.toggleTop.UseVisualStyleBackColor = true;
+            // 
+            // toggleBottom
+            // 
+            this.toggleBottom.AutoSize = true;
+            this.toggleBottom.Location = new System.Drawing.Point(41, 270);
+            this.toggleBottom.Name = "toggleBottom";
+            this.toggleBottom.Size = new System.Drawing.Size(124, 36);
+            this.toggleBottom.TabIndex = 21;
+            this.toggleBottom.TabStop = true;
+            this.toggleBottom.Text = "Bottom";
+            this.toggleBottom.UseVisualStyleBackColor = true;
+            // 
+            // toggleShoe
+            // 
+            this.toggleShoe.AutoSize = true;
+            this.toggleShoe.Location = new System.Drawing.Point(41, 312);
+            this.toggleShoe.Name = "toggleShoe";
+            this.toggleShoe.Size = new System.Drawing.Size(109, 36);
+            this.toggleShoe.TabIndex = 22;
+            this.toggleShoe.TabStop = true;
+            this.toggleShoe.Text = "Shoes";
+            this.toggleShoe.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 46);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // toggleBtn
+            // 
+            this.toggleBtn.Location = new System.Drawing.Point(41, 366);
+            this.toggleBtn.Name = "toggleBtn";
+            this.toggleBtn.Size = new System.Drawing.Size(150, 46);
+            this.toggleBtn.TabIndex = 24;
+            this.toggleBtn.Text = "Toggle";
+            this.toggleBtn.UseVisualStyleBackColor = true;
+            this.toggleBtn.Click += new System.EventHandler(this.toggleBtn_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(317, 272);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(133, 32);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Dark Mode";
+            // 
+            // darkModeSelect
+            // 
+            this.darkModeSelect.Location = new System.Drawing.Point(277, 312);
+            this.darkModeSelect.Name = "darkModeSelect";
+            this.darkModeSelect.Size = new System.Drawing.Size(212, 60);
+            this.darkModeSelect.TabIndex = 26;
+            this.darkModeSelect.Text = "Select";
+            this.darkModeSelect.UseVisualStyleBackColor = true;
+            this.darkModeSelect.Click += new System.EventHandler(this.darkModeSelect_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(974, 1129);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(974, 729);
+            this.Controls.Add(this.darkModeSelect);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.toggleBtn);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.toggleShoe);
+            this.Controls.Add(this.toggleBottom);
+            this.Controls.Add(this.toggleTop);
+            this.Controls.Add(this.toggleHeadwear);
             this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.colorSelect);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.uploadPanel);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkedListBox1);
             this.Name = "Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
+            this.Load += new System.EventHandler(this.Settings_Load);
             this.uploadPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -174,8 +259,6 @@
         }
 
         #endregion
-
-        private CheckedListBox checkedListBox1;
         private Label label1;
         private Panel uploadPanel;
         private Button homeBtn;
@@ -185,5 +268,13 @@
         private Button colorSelect;
         private Label label3;
         private Button resetBtn;
+        private RadioButton toggleHeadwear;
+        private RadioButton toggleTop;
+        private RadioButton toggleBottom;
+        private RadioButton toggleShoe;
+        private Button button1;
+        private Button toggleBtn;
+        private Label label4;
+        private Button darkModeSelect;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace VCloset
 {
-    partial class UploadView
+    partial class Upload
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UploadView));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Upload));
             this.fileText = new System.Windows.Forms.TextBox();
             this.uploadBtn = new System.Windows.Forms.Button();
             this.itemSelect = new System.Windows.Forms.CheckedListBox();

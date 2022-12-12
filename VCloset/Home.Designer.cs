@@ -282,6 +282,15 @@
 
         #endregion
 
+        public void redrawBoxs()
+        {
+
+        }
+
+        public void DarkMode()
+        {
+        }
+
         private PictureBox topPicture;
         private PictureBox bottomPicture;
         private Button topNextBtn;

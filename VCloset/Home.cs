@@ -7,57 +7,33 @@ namespace VCloset
     public partial class Form1 : Form
     {
         Wardrobe wardrobe;
-        UploadView uploadView;
+        Upload uploadView;
         Settings settingsView;
         FAQ faqView;
 
-        public Bitmap tempTop;
-        public Bitmap tempBottom;
-        public Bitmap tempShoe;
+        bool topVisible;
+        bool bottomVisible;
+        bool shoeVisible;
+
         public Form1()
         {
             InitializeComponent();
-            wardrobe = new Wardrobe();
+            wardrobe = new Wardrobe(this);
             settingsView = new Settings(this, faqView);
             faqView = new FAQ(this, settingsView);  
-            uploadView = new UploadView(this, wardrobe, settingsView, faqView);
+            uploadView = new Upload(this, wardrobe, settingsView, faqView);
             faqView = new FAQ(this, settingsView);
-
-            List<Bitmap> bmps = wardrobe.Populate();
-            if(bmps.Count > 0)
-            {
-                topPicture.Image = bmps[0];
-                bottomPicture.Image = bmps[1];
-                shoesPicture.Image = bmps[2];
-            }
-            else
-            {
-                MessageBox.Show("No Top(s) and/or Bottom(s) to Display");
-            }
+            topVisible = true; bottomVisible = true; shoeVisible = true;
+            wardrobe.Populate();
+            
         }
 
         private void uploadBtn_Click(object sender, EventArgs e)
         {
             uploadView.Show();
             this.Hide();
-            // need to wait for form to close then run if else
-            if (uploadView.ReturnValueIndex == 1)
-            {
-                topPicture.ImageLocation = uploadView.ReturnValuePic;
-            }
-            else if (uploadView.ReturnValueIndex == 2)
-            {
-                bottomPicture.ImageLocation = uploadView.ReturnValuePic;
-            }
-            else
-            {
-                //MessageBox.Show("Didn't Get an Image to Upload");
-            }
-            // check if uv has been closed ?
-            // display returned string to corresponding picture box
         }
         
-
         private void topNextBtn_Click(object sender, EventArgs e)
         {
             Bitmap bmp = wardrobe.NextTop();
@@ -134,13 +110,35 @@ namespace VCloset
 
         public void ClearPictureBoxs()
         {
-            //tempTop = (Bitmap)topPicture.Image.Clone();
-            //tempBottom = (Bitmap)bottomPicture.Image.Clone();
-            //tempShoe = (Bitmap)shoesPicture.Image.Clone();
-
             topPicture.Image.Dispose();
+            //topPicture.Dispose();
             bottomPicture.Image.Dispose();
+            //bottomPicture.Dispose();
             shoesPicture.Image.Dispose();
+            //shoesPicture.Dispose();
+        }
+
+        public void Populate(Bitmap popTop, Bitmap popBottom, Bitmap popShoe)
+        {
+            topPicture.Image = popTop;
+            bottomPicture.Image = popBottom;
+            shoesPicture.Image = popShoe;
+
+        }
+
+        public void PopulateTop(Bitmap popTop)
+        {
+            topPicture.Image = popTop;
+        }
+
+        public void PopulateBottom(Bitmap popBottom)
+        {
+            bottomPicture.Image = popBottom;
+        }
+
+        public void PopulateShoe(Bitmap popShoe)
+        {
+            shoesPicture.Image = popShoe;
         }
 
         public void SetPictureBox(int box)
@@ -157,6 +155,101 @@ namespace VCloset
             {
                 shoesPicture.Image = wardrobe.GetNewestShoe();
             }
+        }
+
+        public void EnableTops()
+        {
+            topNextBtn.Enabled = true;
+            topBackBtn.Enabled = true;
+        }
+
+        public void DisableTops()
+        {
+            topNextBtn.Enabled = false;
+            topBackBtn.Enabled = false;
+        }
+
+        public void EnableBottoms()
+        {
+            bottomNextBtn.Enabled = true;
+            bottomBackBtn.Enabled = true;
+        }
+
+        public void DisableBottoms()
+        {
+            bottomNextBtn.Enabled = false;
+            bottomBackBtn.Enabled = false;
+        }
+
+        public void EnableShoes()
+        {
+            shoesNextBtn.Enabled = true;
+            shoesBackBtn.Enabled = true;
+        }
+
+        public void DisableShoes()
+        {
+            shoesNextBtn.Enabled = false;
+            shoesBackBtn.Enabled = false;
+        }
+
+        public void ToggleTops()
+        {
+            if (topVisible)
+            {
+                topVisible = false;
+                topNextBtn.Hide();
+                topBackBtn.Hide();
+                topPicture.Hide();
+            }
+            else
+            {
+                topVisible = true;
+                topNextBtn.Show();
+                topBackBtn.Show();
+                topPicture.Show();
+            }
+        }
+
+        public void ToggleBottoms()
+        {
+            if (bottomVisible)
+            {
+                bottomVisible = false;
+                bottomNextBtn.Hide();
+                bottomBackBtn.Hide();
+                bottomPicture.Hide();
+            }
+            else
+            {
+                bottomVisible = true;
+                bottomNextBtn.Show();
+                bottomBackBtn.Show();
+                bottomPicture.Show();
+            }
+        }
+
+        public void ToggleShoes()
+        {
+            if (shoeVisible)
+            {
+                shoeVisible = false;
+                shoesNextBtn.Hide();
+                shoesBackBtn.Hide();
+                shoesPicture.Hide();
+            }
+            else
+            {
+                shoeVisible = true;
+                shoesNextBtn.Show();
+                shoesBackBtn.Show();
+                shoesPicture.Show();
+            }
+        }
+
+        public void ResettingObjects()
+        {
+            wardrobe.ClearObjectLists();
         }
     }
 }

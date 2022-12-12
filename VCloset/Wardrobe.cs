@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,12 +11,14 @@ namespace VCloset
     // populate each list in the constructor
     public class Wardrobe
     {
+        Form1 Home;
         List<Top> tops;
         List<Bottom> bottoms;
         List<Shoe> shoes;
-        public Wardrobe()
+        public Wardrobe(Form1 home)
         {
             // set all fields that need set
+            Home = home;
             topFolder = "..\\..\\..\\Tops\\";
             bottomFolder = "..\\..\\..\\Bottoms\\";
             shoeFolder = "..\\..\\..\\Shoes\\";
@@ -73,18 +76,8 @@ namespace VCloset
         }
         #endregion
 
-        public List<Bitmap> Populate()
+        public void Populate()
         {
-            List<Bitmap> list = new List<Bitmap>();
-            if (topPath.Length > 0 && bottomPath.Length > 0 && shoePath.Length > 0)
-            {
-                System.Drawing.Bitmap topBmp = new System.Drawing.Bitmap(topPath[0]);
-                System.Drawing.Bitmap botBmp = new System.Drawing.Bitmap(bottomPath[0]);
-                System.Drawing.Bitmap shoesBmp = new System.Drawing.Bitmap(shoePath[0]);
-                list.Add(topBmp);
-                list.Add(botBmp);
-                list.Add(shoesBmp);
-            }
 
             if(topPath.Length > 0)
             {
@@ -113,7 +106,44 @@ namespace VCloset
                 }
             }
 
-            return list;
+            if(tops.Count > 0)
+            {
+                Home.PopulateTop(tops[0].GetImage());
+                if(tops.Count == 1)
+                {
+                    Home.DisableTops();
+                }
+            }
+            else
+            {
+                Home.DisableTops();
+            }
+
+            if(bottoms.Count > 0)
+            {
+                Home.PopulateBottom(bottoms[0].GetImage());
+                if (bottoms.Count == 1)
+                {
+                    Home.DisableBottoms();
+                }
+            }
+            else
+            {
+                Home.DisableBottoms();
+            }
+
+            if(shoes.Count > 0)
+            {
+                Home.PopulateShoe(shoes[0].GetImage());
+                if (shoes.Count == 1)
+                {
+                    Home.DisableShoes();
+                }
+            }
+            else
+            {
+                Home.DisableShoes();
+            }
         }
 
         public string AddTop()
@@ -122,22 +152,35 @@ namespace VCloset
             string imgLoc = "";
             try
             {
+                // getting file from users file explorer
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.Filter = "png files(*.png)|*.png| all files(*.*)|*.*";
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     imgLoc = ofd.FileName;
                 }
+
+                //getting exact file name
                 string[] tokens = imgLoc.Split(new char[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
+                // set image variable
                 img = Image.FromFile(imgLoc);
+                //save image in local dir with original file name
                 img.Save("..\\..\\..\\Tops\\" + tokens[tokens.Length-1]);
+                //refresh top dir
                 topPath = Directory.GetFiles(topFolder);
+                // increment maxtop to reflect number of items
                 maxTop++;
 
                 // create a clothing item object or top object
                 Top temp = new Top(imgLoc);
                 // add object to list
                 tops.Add(temp);
+
+                // if our list has more than one element we can now iterate through items
+                if(tops.Count > 1)
+                {
+                    Home.EnableTops();
+                }
                 return imgLoc;
             }
             catch (Exception e)
@@ -169,6 +212,11 @@ namespace VCloset
                  Bottom temp = new Bottom(imgLoc);
                 // add object to list
                 bottoms.Add(temp);
+
+                if (bottoms.Count > 1)
+                {
+                    Home.EnableBottoms();
+                }
 
                 return imgLoc;
             }
@@ -202,6 +250,11 @@ namespace VCloset
                 // add object to list
                 shoes.Add(temp);
 
+                if (shoes.Count > 1)
+                {
+                    Home.EnableShoes();
+                }
+
                 return imgLoc;
             }
             catch (Exception)
@@ -213,91 +266,132 @@ namespace VCloset
 
         public Bitmap NextTop()
         {
-            if (topIndex + 1 == maxTop)
+            if(tops.Count == 0)
             {
-                topIndex = 0;
+                return new Bitmap(1,1);
             }
             else
             {
-                topIndex++;
+                if (topIndex + 1 == maxTop)
+                {
+                    topIndex = 0;
+                }
+                else
+                {
+                    topIndex++;
+                }
+                // old way of returning image
+                //System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(topPath[topIndex]);
+                return tops[topIndex].GetImage();
             }
-            // old way of returning image
-            //System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(topPath[topIndex]);
-            return tops[topIndex].GetImage();
         }
 
         public Bitmap PrevTop()
         {
-            if (topIndex - 1 < 0)
+            if(tops.Count == 0)
             {
-                topIndex = maxTop - 1;
+                return new Bitmap(1, 1);
             }
             else
             {
-                topIndex--;
+                if (topIndex - 1 < 0)
+                {
+                    topIndex = maxTop - 1;
+                }
+                else
+                {
+                    topIndex--;
+                }
+                // old way of returning image
+                //System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(topPath[topIndex]);
+                return tops[topIndex].GetImage();
             }
-            // old way of returning image
-            //System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(topPath[topIndex]);
-            return tops[topIndex].GetImage();
         }
 
         public Bitmap NextBottom()
         {
-            if (bottomIndex + 1 == maxBottom)
+            if(bottoms.Count == 0)
             {
-                bottomIndex = 0;
+                return new Bitmap(1, 1);
             }
             else
             {
-                bottomIndex++;
+                if (bottomIndex + 1 == maxBottom)
+                {
+                    bottomIndex = 0;
+                }
+                else
+                {
+                    bottomIndex++;
+                }
+                // old way of returning image
+                //System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(bottomPath[bottomIndex]);
+                return bottoms[bottomIndex].GetImage();
             }
-            // old way of returning image
-            //System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(bottomPath[bottomIndex]);
-            return bottoms[bottomIndex].GetImage();
         }
 
         public Bitmap PrevBottom()
         {
-            if (bottomIndex - 1 < 0)
+            if(bottoms.Count == 0)
             {
-                bottomIndex = maxBottom - 1;
+                return new Bitmap(1, 1);
             }
             else
             {
-                bottomIndex--;
+                if (bottomIndex - 1 < 0)
+                {
+                    bottomIndex = maxBottom - 1;
+                }
+                else
+                {
+                    bottomIndex--;
+                }
+                // old way of returning image
+                //System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(bottomPath[bottomIndex]);
+                return bottoms[bottomIndex].GetImage();
             }
-            // old way of returning image
-            //System.Drawing.Bitmap newBmp = new System.Drawing.Bitmap(bottomPath[bottomIndex]);
-            return bottoms[bottomIndex].GetImage();
         }
 
         public Bitmap NextShoe()
         {
- 
-            if (shoeIndex + 1 == maxShoe)
+            if(shoes.Count == 0)
             {
-                shoeIndex = 0;
+                return new Bitmap(1, 1);
             }
             else
             {
-                shoeIndex++;
-            }
+                if (shoeIndex + 1 == maxShoe)
+                {
+                    shoeIndex = 0;
+                }
+                else
+                {
+                    shoeIndex++;
+                }
 
-            return shoes[shoeIndex].GetImage();
+                return shoes[shoeIndex].GetImage();
+            }
         }
 
         public Bitmap PrevShoe()
         {
-            if (shoeIndex - 1 < 0)
+            if(shoes.Count == 0)
             {
-                shoeIndex = maxShoe - 1;
+                return new Bitmap(1, 1);
             }
             else
             {
-                shoeIndex--;
-            }
+                if (shoeIndex - 1 < 0)
+                {
+                    shoeIndex = maxShoe - 1;
+                }
+                else
+                {
+                    shoeIndex--;
+                }
 
-            return shoes[shoeIndex].GetImage();
+                return shoes[shoeIndex].GetImage();
+            }
         }
 
         public Bitmap GetNewestTop()
@@ -324,23 +418,40 @@ namespace VCloset
             Random rnd = new Random();
             if (topPath != null && bottomPath != null && shoePath != null)
             {
+                // create random vars using bounds of 0 and max items
                 int topRnd = rnd.Next(0, maxTop);
                 int botRnd = rnd.Next(0, maxBottom);
                 int shoeRnd = rnd.Next(0, maxShoe);
+
+                // set new indices
                 topIndex = topRnd;
                 bottomIndex = botRnd;
                 shoeIndex = shoeRnd;
+
+                // create bitmaps from object lists
                 Bitmap topBmp = tops[topIndex].GetImage();
                 Bitmap botBmp = bottoms[bottomIndex].GetImage();
                 Bitmap shoeBmp = shoes[shoeIndex].GetImage();
-                // old way of returning images
-                //System.Drawing.Bitmap topBmp = new System.Drawing.Bitmap(topPath[topRnd]);
-                //System.Drawing.Bitmap botBmp = new System.Drawing.Bitmap(bottomPath[botRnd]);
+
+                // return these bitmaps to be set in Home
                 bmps.Add(topBmp);
                 bmps.Add(botBmp);
                 bmps.Add(shoeBmp);
             }
             return bmps;
+        }
+
+        public void ClearObjectLists()
+        {
+            tops.Clear();
+            bottoms.Clear();
+            shoes.Clear();
+            topIndex = 0;
+            maxTop = 0;
+            bottomIndex = 0;
+            maxBottom = 0;
+            shoeIndex = 0;
+            maxShoe = 0;
         }
     }
 }

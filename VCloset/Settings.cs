@@ -72,6 +72,54 @@ namespace VCloset
             {
                 file.Delete();
             }
+
+            homeView.ResettingObjects();
+        }
+
+        private void Settings_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toggleBtn_Click(object sender, EventArgs e)
+        {
+            if (toggleHeadwear.Checked)
+            {
+                this.Hide();
+                toggleHeadwear.Checked = false;
+                homeView.Show();
+
+            }
+            else if (toggleTop.Checked)
+            {
+                this.Hide();
+                toggleTop.Checked = false;
+                homeView.Show();
+                homeView.ToggleTops();
+            }
+            else if (toggleBottom.Checked)
+            {
+                this.Hide();
+                toggleBottom.Checked = false;
+                homeView.Show();
+                homeView.ToggleBottoms();
+            }
+            else if (toggleShoe.Checked)
+            {
+                this.Hide();
+                toggleShoe.Checked = false;
+                homeView.Show();
+                homeView.ToggleShoes();
+            }
+            else
+            {
+                MessageBox.Show("No Item was selected to be toggled!");
+            }
+        }
+
+        private void darkModeSelect_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

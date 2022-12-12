@@ -16,6 +16,6 @@ C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.pd
 C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.genruntimeconfig.cache
 C:\Users\jaybr\Source\Repos\Capstone\VCloset\obj\Debug\net6.0-windows\ref\VCloset.dll
 C:\Users\jaybr\source\repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.Settings.resources
-C:\Users\jaybr\source\repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.UploadView.resources
 C:\Users\jaybr\source\repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.Properties.Resources.resources
 C:\Users\jaybr\source\repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.FAQ.resources
+C:\Users\jaybr\source\repos\Capstone\VCloset\obj\Debug\net6.0-windows\VCloset.Upload.resources

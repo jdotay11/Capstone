@@ -14,7 +14,10 @@ namespace VCloset
         public Shoe(String file)
         {
             fileName = file;
-            image = new System.Drawing.Bitmap(file);
+            using (var bmpTemp = new Bitmap(file))
+            {
+                image = new Bitmap(bmpTemp);
+            }
         }
 
         public override Bitmap GetImage()

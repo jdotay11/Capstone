@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace VCloset
 {
-    public partial class UploadView : Form
+    public partial class Upload : Form
     {
         Form1 homeView;
         Settings settingsView;
@@ -18,7 +18,7 @@ namespace VCloset
         Wardrobe origWardrobe;
         public int ReturnValueIndex { get; set; }
         public string ReturnValuePic { get; set; }
-        public UploadView(Form1 home, Wardrobe w, Settings settings, FAQ faq)
+        public Upload(Form1 home, Wardrobe w, Settings settings, FAQ faq)
         {
             InitializeComponent();
             homeView = home;
