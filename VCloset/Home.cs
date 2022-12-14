@@ -32,6 +32,7 @@ namespace VCloset
         {
             uploadView.Show();
             this.Hide();
+            uploadView.ClearListBox();
         }
         
         private void topNextBtn_Click(object sender, EventArgs e)
@@ -110,12 +111,20 @@ namespace VCloset
 
         public void ClearPictureBoxs()
         {
-            topPicture.Image.Dispose();
-            //topPicture.Dispose();
-            bottomPicture.Image.Dispose();
-            //bottomPicture.Dispose();
-            shoesPicture.Image.Dispose();
-            //shoesPicture.Dispose();
+            if(topPicture.Image != null)
+            {
+                topPicture.Image.Dispose();
+            }
+
+            if(bottomPicture.Image != null)
+            {
+                bottomPicture.Image.Dispose();
+            }
+            
+            if(shoesPicture.Image != null)
+            {
+                shoesPicture.Image.Dispose();
+            }
         }
 
         public void Populate(Bitmap popTop, Bitmap popBottom, Bitmap popShoe)
@@ -250,6 +259,16 @@ namespace VCloset
         public void ResettingObjects()
         {
             wardrobe.ClearObjectLists();
+            var a = new Bitmap(1, 1);
+            a.SetPixel(0, 0, Color.White);
+            var b = new Bitmap(1, 1);
+            b.SetPixel(0, 0, Color.White);
+            var c = new Bitmap(1, 1);
+            c.SetPixel(0, 0, Color.White);
+            topPicture.Image = new Bitmap(a, 1024, 1024);
+            bottomPicture.Image = new Bitmap(b, 1024, 1024);
+            shoesPicture.Image = new Bitmap(c, 1024, 1024);
+            DisableTops(); DisableBottoms(); DisableShoes();
         }
     }
 }

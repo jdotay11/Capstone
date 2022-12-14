@@ -36,6 +36,7 @@ namespace VCloset
             }
             else if(itemSelect.CheckedItems.Count > 1)
             {
+                itemSelect.ClearSelected();
                 MessageBox.Show("Please Select Only One Type");
             }
             else
@@ -45,7 +46,7 @@ namespace VCloset
                     ReturnValueIndex = 1;
                     ReturnValuePic = origWardrobe.AddTop();
 
-
+                    ClearListBox();
                     homeView.SetPictureBox(ReturnValueIndex);
                     this.Hide();
                     homeView.Show();
@@ -55,6 +56,7 @@ namespace VCloset
                     ReturnValueIndex = 2;
                     ReturnValuePic = origWardrobe.AddBottom();
 
+                    ClearListBox();
                     homeView.SetPictureBox(ReturnValueIndex);
                     this.Hide();
                     homeView.Show();
@@ -64,6 +66,7 @@ namespace VCloset
                     ReturnValueIndex = 3;
                     origWardrobe.AddShoes();
 
+                    ClearListBox();
                     homeView.SetPictureBox(ReturnValueIndex);
                     this.Hide();
                     homeView.Show();
@@ -97,6 +100,14 @@ namespace VCloset
         {
             this.Hide();
             settingsView.Show();
+        }
+
+        public void ClearListBox()
+        {
+            for(int x = 0; x < itemSelect.Items.Count; x++)
+            {
+                itemSelect.SetItemChecked(x, false);
+            }
         }
     }
 }

@@ -74,6 +74,8 @@ namespace VCloset
             }
 
             homeView.ResettingObjects();
+            this.Hide();
+            homeView.Show();
         }
 
         private void Settings_Load(object sender, EventArgs e)

@@ -61,6 +61,7 @@
             // 
             // itemSelect
             // 
+            this.itemSelect.CheckOnClick = true;
             this.itemSelect.FormattingEnabled = true;
             this.itemSelect.Items.AddRange(new object[] {
             "Top",
@@ -121,7 +122,7 @@
             this.faqBtn.UseVisualStyleBackColor = false;
             this.faqBtn.Click += new System.EventHandler(this.faqBtn_Click);
             // 
-            // UploadView
+            // Upload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,7 +132,7 @@
             this.Controls.Add(this.itemSelect);
             this.Controls.Add(this.uploadBtn);
             this.Controls.Add(this.fileText);
-            this.Name = "UploadView";
+            this.Name = "Upload";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UploadView";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UploadView_FormClosed);

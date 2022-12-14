@@ -42,7 +42,6 @@
             this.toggleTop = new System.Windows.Forms.RadioButton();
             this.toggleBottom = new System.Windows.Forms.RadioButton();
             this.toggleShoe = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
             this.toggleBtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.darkModeSelect = new System.Windows.Forms.Button();
@@ -190,15 +189,6 @@
             this.toggleShoe.Text = "Shoes";
             this.toggleShoe.UseVisualStyleBackColor = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 46);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // toggleBtn
             // 
             this.toggleBtn.Location = new System.Drawing.Point(41, 366);
@@ -237,7 +227,6 @@
             this.Controls.Add(this.darkModeSelect);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.toggleBtn);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.toggleShoe);
             this.Controls.Add(this.toggleBottom);
             this.Controls.Add(this.toggleTop);
@@ -272,7 +261,6 @@
         private RadioButton toggleTop;
         private RadioButton toggleBottom;
         private RadioButton toggleShoe;
-        private Button button1;
         private Button toggleBtn;
         private Label label4;
         private Button darkModeSelect;
